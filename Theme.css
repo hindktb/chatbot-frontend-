@@ -1,69 +1,73 @@
-/* ============================================================
-   LMV Assistant RH — Design tokens
-   Aligned with La Marocaine Vie's visual identity:
-   institutional navy (trust, stability) + digital turquoise
-   accent (the color used on lamarocainevie.com), on a calm,
-   paper-light neutral base. A single restrained geometric
-   accent (inspired by zellige interlace) is used as a signature
-   detail — not repeated as decoration everywhere.
-   ============================================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
-
 :root {
-  /* --- Brand: Navy (primary) --- */
-  --lmv-navy-950: #071b31;
-  --lmv-navy-900: #0d2b4e;
-  --lmv-navy-800: #123a67;
-  --lmv-navy-700: #1c4a7d;
 
-  /* --- Brand: Turquoise (accent) --- */
-  --lmv-turquoise-700: #007a89;
-  --lmv-turquoise-600: #00a0b0;
-  --lmv-turquoise-500: #00bcd4; /* live brand accent, lamarocainevie.com */
-  --lmv-turquoise-400: #3fd1e0;
-  --lmv-turquoise-100: #e1f7f9;
+  /* =====================================================
+     LMV BLUE
+     ===================================================== */
 
-  /* --- Neutrals --- */
-  --lmv-ink: #16232f;
-  --lmv-slate: #55636f;
-  --lmv-slate-light: #8896a1;
-  --lmv-mist-50: #f5f8f9;
-  --lmv-mist-100: #eef3f5;
-  --lmv-line: #dde5e9;
+  --lmv-primary: #004b91;
+  --lmv-primary-dark: #003469;
+  --lmv-primary-light: #3e73bb;
+
+
+  /* =====================================================
+     NEUTRALS
+     ===================================================== */
+
   --lmv-white: #ffffff;
 
-  /* --- Semantic --- */
-  --lmv-success: #1f9e6b;
-  --lmv-danger: #d6485a;
-  --lmv-danger-tint: #fbe9eb;
-  --lmv-amber: #e0a030;
+  --lmv-background: #f8f8fc;
 
-  /* --- Typography --- */
-  --font-display: 'Poppins', 'Segoe UI', sans-serif;
-  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --lmv-surface: #ffffff;
 
-  /* --- Elevation --- */
-  --shadow-sm: 0 1px 3px rgba(13, 43, 78, 0.08);
-  --shadow-md: 0 8px 24px rgba(13, 43, 78, 0.12);
-  --shadow-lg: 0 20px 48px rgba(13, 43, 78, 0.16);
+  --lmv-surface-light: #f2f3f7;
 
-  /* --- Radius --- */
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
+  --lmv-border: #dfe3e8;
 
-  /* --- Signature accent strip: an abstracted interlace,
-     alternating navy / turquoise at a shallow angle —
-     a quiet nod to zellige geometry, used once per surface. */
-  --lmv-interlace: repeating-linear-gradient(
-    135deg,
-    var(--lmv-turquoise-500) 0px,
-    var(--lmv-turquoise-500) 8px,
-    var(--lmv-navy-800) 8px,
-    var(--lmv-navy-800) 16px
-  );
+  --lmv-text: #191c20;
+
+  --lmv-text-secondary: #5c5f61;
+
+  --lmv-text-muted: #727782;
+
+
+  /* =====================================================
+     TYPOGRAPHY
+     ===================================================== */
+
+  --font-body:
+    'Hanken Grotesk',
+    'Segoe UI',
+    sans-serif;
+
+  --font-display:
+    'Hanken Grotesk',
+    'Segoe UI',
+    sans-serif;
+
+
+  /* =====================================================
+     SHADOWS
+     ===================================================== */
+
+  --shadow-sm:
+    0 1px 4px rgba(0, 52, 105, 0.08);
+
+  --shadow-md:
+    0 4px 12px rgba(0, 52, 105, 0.10);
+
+
+  /* =====================================================
+     RADIUS
+     ===================================================== */
+
+  --radius-sm: 6px;
+
+  --radius-md: 10px;
+
+  --radius-lg: 14px;
+
 }
+
 
 *,
 *::before,
@@ -71,19 +75,27 @@
   box-sizing: border-box;
 }
 
-/* Visible, on-brand focus ring everywhere — accessibility floor */
+
 :focus-visible {
-  outline: 2px solid var(--lmv-turquoise-500);
+  outline: 2px solid var(--lmv-primary);
+
   outline-offset: 2px;
 }
 
+
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
+
     animation-duration: 0.001ms !important;
+
     animation-iteration-count: 1 !important;
+
     transition-duration: 0.001ms !important;
+
     scroll-behavior: auto !important;
   }
+
 }
