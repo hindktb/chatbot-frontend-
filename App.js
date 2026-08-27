@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 import ChatBot from './components/ChatBot';
 import Sidebar from './components/Sidebar';
@@ -91,14 +93,8 @@ function App() {
   if (loading) {
 
     return (
-      <div
-        style={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
+      <div className="app-loading">
+        <span className="spinner" />
         Chargement...
       </div>
     );
@@ -121,19 +117,9 @@ function App() {
 
       <button
         onClick={logout}
-        style={{
-          position: "fixed",
-          top: "15px",
-          right: "15px",
-          zIndex: 999,
-          padding: "8px 15px",
-          border: "none",
-          borderRadius: "8px",
-          cursor: "pointer",
-          backgroundColor: "#dc3545",
-          color: "white"
-        }}
+        className="logout-btn"
       >
+        <FontAwesomeIcon icon={faRightFromBracket} />
         Déconnexion
       </button>
 
