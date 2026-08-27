@@ -1,155 +1,230 @@
-.sidebar-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1001;
-  background: var(--lmv-white);
-  border: 1px solid var(--lmv-line);
-  border-radius: var(--radius-sm);
-  padding: 12px 15px;
-  cursor: pointer;
-  box-shadow: var(--shadow-sm);
-  font-size: 18px;
-  transition: all 0.2s ease;
-  color: var(--lmv-navy-900);
-}
-
-.sidebar-toggle:hover {
-  background: var(--lmv-mist-50);
-  color: var(--lmv-turquoise-600);
-}
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
 
 .sidebar {
-  position: fixed;
-  right: 0;
-  top: 0;
-  height: 100vh;
-  width: 280px;
-  background: linear-gradient(180deg, var(--lmv-navy-950) 0%, var(--lmv-navy-900) 100%);
-  color: var(--lmv-white);
-  z-index: 1000;
-  transition: transform 0.3s ease;
-  overflow-y: auto;
-  box-shadow: -4px 0 24px rgba(7, 27, 49, 0.25);
+  width: 245px;
+  min-width: 245px;
+  height: 100%;
+
+  background: #ffffff;
+  border-right: 1px solid #dfe3e8;
+
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+  z-index: 20;
+
+  transition: width 0.25s ease;
 }
 
 .sidebar.closed {
-  transform: translateX(100%);
-}
-.sidebar.open {
-  transform: translateX(0);
-}
-
-.sidebar-header {
-  padding: 28px 20px;
-  background: rgba(255, 255, 255, 0.04);
-  border-bottom: 3px solid transparent;
-  border-image: var(--lmv-interlace) 1;
-  text-align: center;
+  width: 0;
+  min-width: 0;
+  overflow: hidden;
 }
 
-.sidebar-logo {
-  height: 42px;
-  margin-bottom: 14px;
-  background: var(--lmv-white);
-  padding: 4px 10px;
-  border-radius: 8px;
-}
+/* =========================================================
+   LOGO
+   ========================================================= */
 
-.sidebar-header h2 {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
+.sidebar-logo-container {
+  height: 49px;
 
-.sidebar-subtitle {
-  font-size: 11px;
-  color: var(--lmv-turquoise-400);
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-}
-
-.sidebar-section {
-  padding: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.sidebar-section h3 {
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: rgba(255, 255, 255, 0.65);
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-}
-
-.history-list {
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-.empty-history {
-  text-align: center;
-  color: rgba(255, 255, 255, 0.45);
-  font-size: 13px;
-  padding: 20px 0;
-}
-
-.history-item {
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border-left: 2px solid transparent;
-  border-radius: var(--radius-sm);
-  margin-bottom: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.history-item:hover {
-  background: rgba(0, 188, 212, 0.12);
-  border-left-color: var(--lmv-turquoise-500);
-  transform: translateX(-3px);
-}
-
-.history-query {
-  font-size: 12px;
-  margin-bottom: 4px;
-  line-height: 1.4;
-}
-
-.history-time {
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.sidebar-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 15px 20px;
-  background: rgba(0, 0, 0, 0.25);
-}
-
-.sidebar-date {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.75);
+
+  border-bottom: 1px solid #dfe3e8;
+
+  flex-shrink: 0;
 }
 
-.sidebar-date svg {
-  color: var(--lmv-turquoise-400);
+.sidebar-logo {
+  width: auto;
+  height: 29px;
+  object-fit: contain;
 }
+
+/* =========================================================
+   HISTORY
+   ========================================================= */
+
+.sidebar-history {
+  flex: 1;
+  min-height: 0;
+
+  padding: 14px 17px;
+
+  overflow-y: auto;
+}
+
+.history-title {
+  margin: 0 0 17px;
+
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 9px;
+  line-height: 1;
+
+  font-weight: 600;
+  letter-spacing: 0.07em;
+
+  color: #444749;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.history-item {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding: 7px 0;
+
+  background: transparent;
+  border: none;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.history-item:hover .history-query {
+  color: #004b91;
+}
+
+.history-query {
+  max-width: 100%;
+
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+
+  line-height: 1.35;
+
+  color: #191c20;
+
+  transition: color 0.15s ease;
+}
+
+.history-time {
+  margin-top: 2px;
+
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 9px;
+
+  color: #727782;
+}
+
+.empty-history {
+  font-size: 11px;
+  color: #727782;
+  padding-top: 5px;
+}
+
+/* =========================================================
+   PROFILE
+   ========================================================= */
+
+.sidebar-profile {
+  height: 60px;
+  min-height: 60px;
+
+  border-top: 1px solid #dfe3e8;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 17px;
+
+  gap: 8px;
+
+  background: #ffffff;
+}
+
+.profile-avatar {
+  width: 25px;
+  height: 25px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #e6e8ed;
+
+  color: #5c5f61;
+
+  font-size: 10px;
+}
+
+.profile-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.profile-name {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+
+  color: #191c20;
+}
+
+.profile-settings {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 9px;
+
+  color: #727782;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.sidebar-history::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-history::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-history::-webkit-scrollbar-thumb {
+  background: #d5d9df;
+  border-radius: 10px;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 768px) {
+
   .sidebar {
-    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 245px;
+    min-width: 245px;
+
+    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .sidebar.closed {
+    transform: translateX(-100%);
+    width: 245px;
+    min-width: 245px;
   }
 }
