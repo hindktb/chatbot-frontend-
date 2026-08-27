@@ -1,31 +1,50 @@
-@import './theme.css';
+@import url(
+  'https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap'
+);
+
+@import './Theme.css';
 
 html,
 body {
   margin: 0;
   padding: 0;
+
+  width: 100%;
   height: 100%;
-  background: var(--lmv-mist-50);
-  color: var(--lmv-ink);
-  font-family: var(--font-body);
+
+  background: #f8f8fc;
+
+  font-family: 'Hanken Grotesk', sans-serif;
+
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
+  width: 100%;
   height: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button,
+input,
+textarea {
+  font-family: 'Hanken Grotesk', sans-serif;
+}
+
+button {
+  outline: none;
 }
 
 h1,
 h2,
-h3 {
-  font-family: var(--font-display);
-  margin: 0;
-}
-
+h3,
+h4,
 p {
   margin: 0;
-}
-
-button {
-  font-family: inherit;
 }
