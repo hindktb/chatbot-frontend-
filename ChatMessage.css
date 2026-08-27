@@ -1,148 +1,306 @@
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
 .message {
   display: flex;
+
+  align-items: flex-start;
+
   gap: 12px;
-  margin-bottom: 16px;
-  animation: slideIn 0.3s ease;
+
+  margin-bottom: 13px;
+
+  animation: messageAppear 0.25s ease;
 }
 
-@keyframes slideIn {
+@keyframes messageAppear {
+
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(4px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
+
 }
+
+
+/* =========================================================
+   USER MESSAGE
+   ========================================================= */
 
 .message.user {
   flex-direction: row-reverse;
 }
 
+
+/* =========================================================
+   AVATAR
+   ========================================================= */
+
 .message-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+
+  min-width: 38px;
+
+  margin-top: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
-  flex-shrink: 0;
-}
 
-.message.user .message-avatar {
-  background: var(--lmv-navy-900);
-  color: var(--lmv-white);
+  border-radius: 50%;
+
+  font-size: 15px;
+
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .message.assistant .message-avatar {
-  background: var(--lmv-turquoise-100);
-  color: var(--lmv-turquoise-700);
-  border: 1px solid var(--lmv-turquoise-400);
+  background: #00549b;
+  color: #ffffff;
+}
+
+.message.user .message-avatar {
+  background: #e3e6eb;
+  color: #5c5f61;
 }
 
 .message.error .message-avatar {
-  background: var(--lmv-danger-tint);
-  color: var(--lmv-danger);
+  background: #fbe9eb;
+  color: #ba1a1a;
 }
 
-.message-content {
+
+/* =========================================================
+   WRAPPER
+   ========================================================= */
+
+.message-wrapper {
   max-width: 75%;
-  padding: 14px 18px;
-  border-radius: 18px;
-  position: relative;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================================================
+   META
+   ========================================================= */
+
+.message-meta {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin: 1px 0 5px;
+}
+
+.message-author {
+  font-family: 'Hanken Grotesk', sans-serif;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  color: #424751;
+}
+
+.message-time-inline {
+  font-family: 'Hanken Grotesk', sans-serif;
+
+  font-size: 9px;
+
+  color: #727782;
+}
+
+
+/* =========================================================
+   MESSAGE BUBBLE
+   ========================================================= */
+
+.message-content {
+  display: inline-block;
+
+  padding: 17px 18px;
+
+  background: #ffffff;
+
+  border: 1px solid #dfe3e8;
+
+  border-radius: 14px;
+
+  border-top-left-radius: 2px;
+
+  color: #191c20;
+
+  box-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.07);
+}
+
+
+/* USER BUBBLE */
+
+.message.user .message-wrapper {
+  align-items: flex-end;
+}
+
+.message.user .message-meta {
+  justify-content: flex-end;
 }
 
 .message.user .message-content {
-  background: linear-gradient(135deg, var(--lmv-navy-900) 0%, var(--lmv-navy-700) 100%);
-  color: var(--lmv-white);
-  border-bottom-right-radius: 4px;
+  background: #00549b;
+  color: #ffffff;
+
+  border-color: #00549b;
+
+  border-top-left-radius: 14px;
+  border-top-right-radius: 2px;
 }
 
-.message.assistant .message-content {
-  background: var(--lmv-white);
-  color: var(--lmv-ink);
-  border: 1px solid var(--lmv-line);
-  border-bottom-left-radius: 4px;
-  box-shadow: var(--shadow-sm);
-}
+
+/* ERROR */
 
 .message.error .message-content {
-  background: var(--lmv-danger-tint);
-  color: var(--lmv-danger);
-  border: 1px solid rgba(214, 72, 90, 0.3);
+  background: #fff4f4;
+
+  border-color: #f0c4c4;
+
+  color: #ba1a1a;
 }
+
+
+/* INITIAL MESSAGE */
 
 .message.initial .message-content {
-  background: linear-gradient(135deg, var(--lmv-mist-50) 0%, var(--lmv-mist-100) 100%);
-  border: 1px dashed var(--lmv-line);
-  font-style: italic;
+  background: #ffffff;
+
+  border: 1px solid #dfe3e8;
+
+  font-style: normal;
 }
+
+
+/* =========================================================
+   TEXT
+   ========================================================= */
 
 .message-text {
-  font-size: 14px;
-  line-height: 1.6;
+  margin: 0;
+
+  font-family: 'Hanken Grotesk', sans-serif;
+
+  font-size: 13px;
+
+  line-height: 1.55;
+
   white-space: pre-wrap;
-  word-wrap: break-word;
+
+  word-break: break-word;
 }
 
+
+/* =========================================================
+   STREAMING CURSOR
+   ========================================================= */
+
 .cursor {
+  display: inline-block;
+
+  margin-left: 2px;
+
+  color: #00549b;
+
+  font-weight: 700;
+
   animation: blink 1s infinite;
-  font-weight: bold;
-  color: var(--lmv-turquoise-600);
 }
 
 @keyframes blink {
+
   0%,
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
+
 }
 
+
+/* =========================================================
+   METADATA
+   ========================================================= */
+
 .message-metadata {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid var(--lmv-line);
   display: flex;
+
   flex-wrap: wrap;
-  gap: 8px;
-  font-size: 11px;
+
+  gap: 6px;
+
+  margin-top: 12px;
+
+  padding-top: 10px;
+
+  border-top: 1px solid #e4e7eb;
+
+  font-size: 9px;
 }
 
 .similarity-score,
 .sources {
   display: flex;
+
   align-items: center;
+
   gap: 5px;
-  padding: 4px 10px;
-  background: var(--lmv-mist-50);
-  border-radius: 12px;
-  color: var(--lmv-slate);
+
+  padding: 4px 8px;
+
+  background: #f4f6f9;
+
+  border-radius: 8px;
+
+  color: #5c5f61;
 }
 
 .similarity-score svg,
 .sources svg {
-  font-size: 10px;
-  color: var(--lmv-turquoise-600);
+  color: #00549b;
 }
 
-.message-time {
-  display: block;
-  font-size: 10px;
-  opacity: 0.55;
-  margin-top: 6px;
-}
 
-.message.user .message-time {
-  text-align: right;
-}
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 768px) {
-  .message-content {
-    max-width: 88%;
+
+  .message-wrapper {
+    max-width: 84%;
   }
+
+  .message-avatar {
+    width: 34px;
+    height: 34px;
+
+    min-width: 34px;
+
+    font-size: 13px;
+  }
+
+  .message-text {
+    font-size: 12px;
+  }
+
 }
