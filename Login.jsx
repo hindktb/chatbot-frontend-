@@ -6,8 +6,12 @@ function Login({ onLoginSuccess }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
-  const login = async () => {
+  const login = async (e) => {
+    e.preventDefault();
+    setError("");
+    setSubmitting(true);
 
     try {
 
@@ -26,8 +30,6 @@ function Login({ onLoginSuccess }) {
         }
       );
 
-      console.log("STATUS =", response.status);
-
       const data = await response.json();
 
       if (data.success) {
@@ -44,7 +46,11 @@ function Login({ onLoginSuccess }) {
 
       console.error("LOGIN ERROR :", err);
 
-      setError("Erreur serveur");
+      setError("Erreur serveur, veuillez réessayer");
+
+    } finally {
+
+      setSubmitting(false);
 
     }
   };
@@ -55,40 +61,51 @@ function Login({ onLoginSuccess }) {
 
       <div className="login-card">
 
-        /logo_lmv.png
+        <div className="login-accent" aria-hidden="true" />
 
-        <h1 className="login-title">
-          Assistant RH
-        </h1>
+        <img src="/logo_lmv.png" alt="La Marocaine Vie" className="login-logo" />
+
+        <h1 className="login-title">Assistant RH</h1>
 
         <p className="login-subtitle">
           Bienvenue sur le portail RH de La Marocaine Vie
         </p>
 
-        <input
-          className="login-input"
-          placeholder="Utilisateur"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+        <form onSubmit={login}>
 
-        <input
-          className="login-input"
-          type="password"
-          placeholder="Mot de passe"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <label className="login-label" htmlFor="username">Identifiant</label>
+          <input
+            id="username"
+            className="login-input"
+            placeholder="Votre identifiant"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            autoComplete="username"
+          />
 
-        <button
-          className="login-button"
-          onClick={login}
-        >
-          Se connecter
-        </button>
+          <label className="login-label" htmlFor="password">Mot de passe</label>
+          <input
+            id="password"
+            className="login-input"
+            type="password"
+            placeholder="Votre mot de passe"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            autoComplete="current-password"
+          />
+
+          <button
+            type="submit"
+            className="login-button"
+            disabled={submitting || !username || !password}
+          >
+            {submitting ? "Connexion..." : "Se connecter"}
+          </button>
+
+        </form>
 
         {error && (
-          <p className="login-error">
+          <p className="login-error" role="alert">
             {error}
           </p>
         )}
